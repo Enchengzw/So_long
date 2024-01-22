@@ -6,7 +6,7 @@
 #    By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 16:53:06 by ezhou             #+#    #+#              #
-#    Updated: 2024/01/11 14:39:23 by ezhou            ###   ########.fr        #
+#    Updated: 2024/01/22 16:25:00 by ezhou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror -Wunreachable-code -Ofast
 
 NAME = So_long
-SRC = flood_fill.c ft_error_check.c So_long.c
+SRC = ft_error_utils.c ft_error_check.c So_long.c textures_images.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

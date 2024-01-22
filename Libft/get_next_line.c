@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 11:20:25 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/11 14:02:53 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/22 16:00:23 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*save[1024];
 
-	line= NULL;
+	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	save[fd] = ft_fill_buffer(fd, &save[fd]);
@@ -120,4 +120,3 @@ char	*get_next_line(int fd)
 	else
 		return (line);
 }
- 

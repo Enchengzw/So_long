@@ -6,7 +6,7 @@
 #    By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 16:53:06 by ezhou             #+#    #+#              #
-#    Updated: 2023/11/30 13:31:41 by ezhou            ###   ########.fr        #
+#    Updated: 2024/01/22 16:22:58 by ezhou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ COLOUR_END=\033[0m
 LIB = ar rcs
 RM = rm -f
 
-CC = gcc -Wall -Wextra -Werror
+CC = gcc -g -Wall -Wextra -Werror
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a

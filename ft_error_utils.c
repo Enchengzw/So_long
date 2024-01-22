@@ -20,7 +20,6 @@ void	fill(char **tab, t_point cur, int *coins, int *exit)
 		*coins += 1;
 	if (tab[cur.y][cur.x] == 'E')
 		*exit = 1;
-	ft_printf("X:%d, Y:%d char:%c\n", cur.x, cur.y, tab[cur.y][cur.x]);
 	tab[cur.y][cur.x] = 'P';
 	fill(tab, (t_point){cur.x - 1, cur.y}, coins, exit);
 	fill(tab, (t_point){cur.x + 1, cur.y}, coins, exit);
@@ -28,30 +27,41 @@ void	fill(char **tab, t_point cur, int *coins, int *exit)
 	fill(tab, (t_point){cur.x, cur.y + 1}, coins, exit);
 }
 
-void	flood_fill(t_map *map, int *coins, int *exit)
+void	flood_fill(t_map *map, char **copy, int *coins, int *exit)
 {
 	t_point	start;
 
 	start.x = map->player_coord.x;
 	start.y = map->player_coord.y;
-	fill(map->array, (t_point){start.x - 1, start.y}, exit, coins);
-	fill(map->array, (t_point){start.x + 1, start.y}, exit, coins);
-	fill(map->array, (t_point){start.x, start.y - 1}, exit, coins);
-	fill(map->array, (t_point){start.x, start.y + 1}, exit, coins);
+	fill(copy, (t_point){start.x - 1, start.y}, exit, coins);
+	fill(copy, (t_point){start.x + 1, start.y}, exit, coins);
+	fill(copy, (t_point){start.x, start.y - 1}, exit, coins);
+	fill(copy, (t_point){start.x, start.y + 1}, exit, coins);
 }
 
 int	ft_is_map_solvable(t_map *map)
 {
-	int	coins;
-	int	exit;
+	int		coins;
+	int		exit;
+	char	**copy;
+	int		i;
 
+	i = 0;
 	coins = 0;
 	exit = 0;
-	flood_fill(map, &exit, &coins);
+	copy = (char **)malloc(sizeof(char *) * (map->height + 1));
+	while ((map->array)[i])
+	{
+		copy[i] = ft_strdup((map->array)[i]);
+		i++;
+	}
+	copy[i] = 0;
+	flood_fill(map, copy, &exit, &coins);
 	if (coins != map->coin_count)
-		return (0);
+		return (ft_free_char(copy), 0);
 	else if (!exit)
-		return (0);
+		return (ft_free_char(copy), 0);
+	ft_free_char(copy);
 	return (1);
 }
 
