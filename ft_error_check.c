@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:17:09 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/22 16:16:30 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/23 16:54:33 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	ft_count_items(t_map *map)
 	j = 0;
 	while (j < map->height)
 	{
-		i = -1;
-		while (++i < map->width)
+		i = 1;
+		while (i < map->width)
 		{
 			if ((map->array)[j][i] == 'C')
 				(map->coin_count)++;
@@ -86,6 +86,7 @@ void	ft_count_items(t_map *map)
 			}
 			else if ((map->array)[j][i] == 'E')
 				(map->exit_count)++;
+			i++;
 		}
 		j++;
 	}
@@ -107,5 +108,5 @@ int	ft_error_check(char *file, t_map *map)
 	flag = ft_is_map_valid(map);
 	if (!flag)
 		return (0);
-	return (0);
+	return (1);
 }

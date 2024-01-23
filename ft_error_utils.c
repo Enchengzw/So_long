@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:05:40 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/15 17:31:15y ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:16:46 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	fill(char **tab, t_point cur, int *coins, int *exit)
 	if (tab[cur.y][cur.x] == 'C')
 		*coins += 1;
 	if (tab[cur.y][cur.x] == 'E')
-		*exit = 1;
+		*exit += 1;
 	tab[cur.y][cur.x] = 'P';
 	fill(tab, (t_point){cur.x - 1, cur.y}, coins, exit);
 	fill(tab, (t_point){cur.x + 1, cur.y}, coins, exit);

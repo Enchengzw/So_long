@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:23:41 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/22 18:20:23 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/23 15:53:21 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,8 @@ int					ft_check_borders(t_map *map);
 int					ft_load_images(t_data *mlx);
 int					ft_texture_to_images(t_data *mlx);
 int					ft_paint_map(t_data *mlx);
+void				ft_key_hook(mlx_key_data_t keydata, void *param);
+int					ft_make_movement(t_data *mlx, int x, int y);
+int					ft_is_valid(int x, int y, t_data *mlx);
 
 #endif

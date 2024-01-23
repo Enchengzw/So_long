@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:50:28 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/22 18:20:40 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/23 16:43:17 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ int	ft_paint_map(t_data *mlx)
 	int	j;
 
 	j = 0;
-	while (j < ((mlx->map)->height))
+	while (j < (mlx->map->height))
 	{
 		i = 0;
 		while (i < (mlx->map)->width)
 		{
-			if (!ft_paint_one(((mlx->map)->array)[j][i], j, i, mlx))
+			if (!ft_paint_one(((mlx->map)->array)[j][i], i, j, mlx))
 				return (0);
 			i++;
 		}
