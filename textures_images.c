@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:50:28 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/23 16:43:17 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/24 18:07:44 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	ft_texture_to_images(t_data *mlx)
 {
-	mlx->image_p = mlx_texture_to_image(mlx->mlx_ptr, mlx->textures_p);
+	mlx->image_p = mlx_texture_to_image(mlx->mlx_ptr, mlx->t_p);
 	if (!(mlx->image_p))
 		return (0);
-	mlx->image_c = mlx_texture_to_image(mlx->mlx_ptr, mlx->textures_c);
+	mlx->image_c = mlx_texture_to_image(mlx->mlx_ptr, mlx->t_c);
 	if (!(mlx->image_c))
 		return (0);
-	mlx->image_e = mlx_texture_to_image(mlx->mlx_ptr, mlx->textures_e);
+	mlx->image_e = mlx_texture_to_image(mlx->mlx_ptr, mlx->t_e);
 	if (!(mlx->image_e))
 		return (0);
-	mlx->image_1 = mlx_texture_to_image(mlx->mlx_ptr, mlx->textures_1);
+	mlx->image_1 = mlx_texture_to_image(mlx->mlx_ptr, mlx->t_1);
 	if (!(mlx->image_1))
 		return (0);
-	mlx->image_0 = mlx_texture_to_image(mlx->mlx_ptr, mlx->textures_0);
+	mlx->image_0 = mlx_texture_to_image(mlx->mlx_ptr, mlx->t_0);
 	if (!(mlx->image_0))
 		return (0);
 	return (1);
@@ -34,20 +34,20 @@ int	ft_texture_to_images(t_data *mlx)
 
 int	ft_load_images(t_data *mlx)
 {
-	mlx->textures_p = mlx_load_png("./images/player.png");
-	if (!mlx->textures_p)
+	mlx->t_p = mlx_load_png("/Users/ezhou/github/So_long/images/player.png");
+	if (!mlx->t_p)
 		return (ft_printf("Error\n", 0));
-	mlx->textures_c = mlx_load_png("./images/Coin.png");
-	if (!mlx->textures_c)
+	mlx->t_c = mlx_load_png("/Users/ezhou/github/So_long/images/Coin.png");
+	if (!mlx->t_c)
 		return (ft_printf("Error\n", 0));
-	mlx->textures_e = mlx_load_png("./images/exit.png");
-	if (!mlx->textures_e)
+	mlx->t_e = mlx_load_png("/Users/ezhou/github/So_long/images/exit.png");
+	if (!mlx->t_e)
 		return (ft_printf("Error\n", 0));
-	mlx->textures_1 = mlx_load_png("./images/Wall.png");
-	if (!mlx->textures_1)
+	mlx->t_1 = mlx_load_png("/Users/ezhou/github/So_long/images/Wall.png");
+	if (!mlx->t_1)
 		return (ft_printf("Error\n", 0));
-	mlx->textures_0 = mlx_load_png("./images/empty.png");
-	if (!mlx->textures_0)
+	mlx->t_0 = mlx_load_png("/Users/ezhou/github/So_long/images/empty.png");
+	if (!mlx->t_0)
 		return (ft_printf("Error\n", 0));
 	if (!ft_texture_to_images(mlx))
 		return (ft_printf("Error\n", 0));

@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:17:09 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/23 16:54:33 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/24 17:18:32 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_generate(int fd, t_map *map)
 	int		i;
 
 	i = 0;
-	map->array = (char **)malloc(sizeof(char *) * map->height);
+	map->array = (char **)malloc(sizeof(char *) * (map->height + 1));
 	line = "";
 	while (line)
 	{
@@ -51,6 +51,7 @@ void	ft_generate(int fd, t_map *map)
 		(map->array)[i] = line;
 		i++;
 	}
+	map->array[i] = 0;
 }
 
 int	ft_valid_border(int x, int y, t_map *map)

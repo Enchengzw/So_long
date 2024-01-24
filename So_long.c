@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:13:23 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/23 17:18:01 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/24 18:06:39 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_initialize_struct(t_data *mlx)
 	(mlx->map)->exit_count = 0;
 	(mlx->map)->coin_count = 0;
 	(mlx->map)->array = 0;
+	(mlx->map)->movement_counter = 0;
 }
 
 int	ft_load_map(t_data *mlx)
@@ -41,30 +42,46 @@ int	ft_load_map(t_data *mlx)
 
 void	ft_free_textures(t_data *mlx)
 {
-	mlx_delete_texture(mlx->textures_p);
-	mlx_delete_texture(mlx->textures_c);
-	mlx_delete_texture(mlx->textures_e);
-	mlx_delete_texture(mlx->textures_1);
-	mlx_delete_texture(mlx->textures_0);
+	if (mlx->t_p)
+		mlx_delete_texture(mlx->t_p);
+	if (mlx->t_c)
+		mlx_delete_texture(mlx->t_c);
+	if (mlx->t_e)
+		mlx_delete_texture(mlx->t_e);
+	if (mlx->t_1)
+		mlx_delete_texture(mlx->t_1);
+	if (mlx->t_0)
+		mlx_delete_texture(mlx->t_0);
+}
+
+void	ft_free_all(t_data *mlx)
+{
+	ft_free_char(mlx->map->array);
+	free(mlx->map);
+	free(mlx);
+}
+
+void	leaks(void)
+{
+	system("leaks So_long");
 }
 
 int	main(int argc, char **argv)
 {
 	t_data	*mlx;
 
+	atexit(leaks);
 	mlx = (t_data *)malloc(sizeof(t_data));
 	ft_initialize_struct(mlx);
 	if (!ft_error_check(argv[1], mlx->map))
-		return (0);
-	if (!ft_load_map(mlx))
-		return (0);
-	if (!ft_load_images(mlx))
-		return (0);
-	if (!ft_paint_map(mlx))
-		return (0);
+		return (ft_free_all(mlx), 0);
+	if (!ft_load_map(mlx) || !ft_load_images(mlx) || !ft_paint_map(mlx))
+		return (mlx_close_window(mlx->mlx_ptr), ft_free_textures(mlx),
+			mlx_terminate(mlx->mlx_ptr), ft_free_all(mlx), 0);
 	mlx_key_hook(mlx->mlx_ptr, ft_key_hook, mlx);
 	mlx_loop(mlx->mlx_ptr);
-	write(2, "Hola\n", 5);
-	//ft_free_textures(mlx);
+	ft_free_textures(mlx);
+	mlx_terminate(mlx->mlx_ptr);
+	ft_free_all(mlx);
 	return (0);
 }

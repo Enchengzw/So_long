@@ -17,7 +17,7 @@ int	ft_is_valid(int x, int y, t_data *mlx)
 	if ((mlx->map->array[y][x]) != '1')
 	{
 		if ((mlx->map)->array[y][x] == 'E' && (mlx->map)->coin_count == 0)
-			return (mlx_terminate(mlx->mlx_ptr), 0);
+			return (mlx_close_window(mlx->mlx_ptr), 0);
 		else if ((mlx->map)->array[y][x] == 'E')
 			return (0);
 		else if (mlx->map->array[y][x] == 'C')
@@ -40,13 +40,15 @@ int	ft_make_movement(t_data *mlx, int x, int y)
 	old_x = (mlx->map)->player_coord.x;
 	old_y = (mlx->map)->player_coord.y;
 	if (mlx_image_to_window(mlx->mlx_ptr, mlx->image_p, x * 64, y * 64) < 0)
-		return (mlx_terminate(mlx->mlx_ptr), 0);
+		return (mlx_close_window(mlx->mlx_ptr), 0);
 	if (mlx_image_to_window(mlx->mlx_ptr, mlx->image_0,
 			(mlx->map)->player_coord.x * 64, (mlx->map)->player_coord.y
 			* 64) < 0)
-		return (mlx_terminate(mlx->mlx_ptr), 0);
+		return (mlx_close_window(mlx->mlx_ptr), 0);
 	(mlx->map)->player_coord.x = x;
 	(mlx->map)->player_coord.y = y;
+	(mlx->map)->movement_counter += 1;
+	ft_printf("Movimientos :%i\n", (mlx->map)->movement_counter);
 	return (1);
 }
 
@@ -72,5 +74,5 @@ void	ft_key_hook(mlx_key_data_t keydata, void *param)
 		&& ft_is_valid(x + 1, y, mlx))
 		ft_make_movement(mlx, x + 1, y);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_terminate(mlx->mlx_ptr);
+		mlx_close_window(mlx->mlx_ptr);
 }

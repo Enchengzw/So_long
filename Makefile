@@ -6,7 +6,7 @@
 #    By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 16:53:06 by ezhou             #+#    #+#              #
-#    Updated: 2024/01/23 15:27:01 by ezhou            ###   ########.fr        #
+#    Updated: 2024/01/24 17:49:41 by ezhou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ MLX_DEPENDENCIES = -framework Cocoa -framework OpenGL -framework IOKit
 MLX_FLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 CC = gcc 
-CFLAGS = -g -Wall -Wextra -Werror -Wunreachable-code -Ofast
+CFLAGS = -g -Wall -Wextra -Werror
 
 NAME = So_long
 SRC = ft_error_utils.c ft_error_check.c So_long.c textures_images.c key_hook.c
