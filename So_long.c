@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:13:23 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/25 13:25:55 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/25 16:44:05 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,10 @@ void	ft_free_all(t_data *mlx)
 	free(mlx);
 }
 
-void	leaks(void)
-{
-	system("leaks So_long");
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	*mlx;
-	int a;
-	int	b;
-	int	c;
 
-	atexit(leaks);
 	mlx = (t_data *)malloc(sizeof(t_data));
 	ft_initialize_struct(mlx);
 	if (!ft_error_check(argv[1], mlx->map))

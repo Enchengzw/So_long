@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:17:09 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/24 17:18:32 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/25 18:01:08 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_valid_border(int x, int y, t_map *map)
 		return (0);
 }
 
-void	ft_count_items(t_map *map)
+int	ft_count_items(t_map *map)
 {
 	int	i;
 	int	j;
@@ -74,9 +74,11 @@ void	ft_count_items(t_map *map)
 	j = 0;
 	while (j < map->height)
 	{
-		i = 1;
-		while (i < map->width)
+		i = 0;
+		while (++i < map->width)
 		{
+			if (!ft_strcontains ("10CEP", map->array[j][i]))
+				return (0);
 			if ((map->array)[j][i] == 'C')
 				(map->coin_count)++;
 			else if ((map->array)[j][i] == 'P')
@@ -87,27 +89,25 @@ void	ft_count_items(t_map *map)
 			}
 			else if ((map->array)[j][i] == 'E')
 				(map->exit_count)++;
-			i++;
 		}
 		j++;
 	}
+	return (1);
 }
 
 int	ft_error_check(char *file, t_map *map)
 {
 	int	fd;
-	int	flag;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (ft_printf("Error\n No se puede abrir el archivo\n"), 0);
-	flag = ft_check_dimensions(file, map, fd);
-	if (!flag)
+	if (!ft_check_dimensions(file, map, fd))
 		return (0);
 	ft_generate(fd, map);
-	ft_count_items(map);
-	flag = ft_is_map_valid(map);
-	if (!flag)
+	if (!ft_count_items(map))
+		return (ft_printf("Error\nCharacters not allowed in map"), 0);
+	if (!ft_is_map_valid(map))
 		return (0);
 	return (1);
 }
