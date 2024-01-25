@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:13:23 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/24 18:06:39 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/25 13:25:55 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	ft_initialize_struct(t_data *mlx)
 	(mlx->map)->coin_count = 0;
 	(mlx->map)->array = 0;
 	(mlx->map)->movement_counter = 0;
+	mlx->t_0 = NULL;
+	mlx->t_1 = NULL;
+	mlx->t_c = NULL;
+	mlx->t_e = NULL;
+	mlx->t_p = NULL;
 }
 
 int	ft_load_map(t_data *mlx)
@@ -31,7 +36,7 @@ int	ft_load_map(t_data *mlx)
 	mlx->mlx_ptr = mlx_init((mlx->map)->width * 64, (mlx->map)->height * 64,
 			"So_Long", false);
 	if (!(mlx->mlx_ptr))
-		return (ft_printf("%s\n", mlx_strerror(mlx_errno)), 0);
+		return (ft_putstr_fd(mlx_strerror(mlx_errno), 1), 0);
 	mlx->win_ptr = mlx_new_image(mlx->mlx_ptr, (mlx->map)->width * 64,
 			(mlx->map)->height * 64);
 	if (!(mlx->win_ptr) || (mlx_image_to_window(mlx->mlx_ptr, mlx->win_ptr, 0,
@@ -69,6 +74,9 @@ void	leaks(void)
 int	main(int argc, char **argv)
 {
 	t_data	*mlx;
+	int a;
+	int	b;
+	int	c;
 
 	atexit(leaks);
 	mlx = (t_data *)malloc(sizeof(t_data));

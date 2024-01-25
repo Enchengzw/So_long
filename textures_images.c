@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:50:28 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/24 18:07:44 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/01/25 13:26:16 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,21 @@ int	ft_load_images(t_data *mlx)
 {
 	mlx->t_p = mlx_load_png("/Users/ezhou/github/So_long/images/player.png");
 	if (!mlx->t_p)
-		return (ft_printf("Error\n", 0));
+		return (ft_printf("Error\n"), 0);
 	mlx->t_c = mlx_load_png("/Users/ezhou/github/So_long/images/Coin.png");
 	if (!mlx->t_c)
-		return (ft_printf("Error\n", 0));
+		return (ft_printf("Error\n"), 0);
 	mlx->t_e = mlx_load_png("/Users/ezhou/github/So_long/images/exit.png");
 	if (!mlx->t_e)
-		return (ft_printf("Error\n", 0));
+		return (ft_printf("Error\n"), 0);
 	mlx->t_1 = mlx_load_png("/Users/ezhou/github/So_long/images/Wall.png");
 	if (!mlx->t_1)
-		return (ft_printf("Error\n", 0));
+		return (ft_printf("Error\n"), 0);
 	mlx->t_0 = mlx_load_png("/Users/ezhou/github/So_long/images/empty.png");
 	if (!mlx->t_0)
-		return (ft_printf("Error\n", 0));
+		return (ft_printf("Error\n"), 0);
 	if (!ft_texture_to_images(mlx))
-		return (ft_printf("Error\n", 0));
+		return (ft_printf("Error\n"), 0);
 	return (1);
 }
 
