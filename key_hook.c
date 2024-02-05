@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 16:57:28 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/25 16:57:29 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/02/05 11:33:03 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_is_valid(int x, int y, t_data *mlx)
 {
 	if ((mlx->map->array[y][x]) != '1')
 	{
-		if ((mlx->map)->array[y][x] == 'E' && (mlx->map)->coin_count == 0)
+		if ((mlx->map)->array[y][x] == 'E' && (mlx->map)->coin_count <= 0)
 			return (mlx_close_window(mlx->mlx_ptr), 0);
 		else if ((mlx->map)->array[y][x] == 'E')
 			return (0);

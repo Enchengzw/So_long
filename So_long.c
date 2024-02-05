@@ -6,7 +6,7 @@
 /*   By: ezhou <ezhou@student.42malaga.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:13:23 by ezhou             #+#    #+#             */
-/*   Updated: 2024/01/25 16:44:05 by ezhou            ###   ########.fr       */
+/*   Updated: 2024/02/05 11:32:44 by ezhou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,12 @@ void	ft_free_textures(t_data *mlx)
 
 void	ft_free_all(t_data *mlx)
 {
-	ft_free_char(mlx->map->array);
-	free(mlx->map);
-	free(mlx);
+	if (mlx && mlx->map && mlx->map->array)
+		ft_free_char(mlx->map->array);
+	if (mlx && mlx->map)
+		free(mlx->map);
+	if (mlx)
+		free(mlx);
 }
 
 int	main(int argc, char **argv)
