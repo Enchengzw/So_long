@@ -1,28 +1,28 @@
 # So_long
 
-## Descripción
+## Description
 
-Este proyecto consiste en hacer tu primer juego simple 2D en C con la ayuda de la librería MLX42. 
-El jugador tiene que recoger las monedas y escapar por la salida.
+This proyect consists on coding your first 2D game in C with the aid of the MLX42 library.
+It is a simple game where the player has to collect all the coins and the escape through the exit.
 
-## Requisitos
+## Requisites
 
-Deberás introducir un mapa válido con la extensión ```.ber``` 
+You should pass a map to the program with the extension```.ber``` 
 
-◦ Todo el mapa debe estar rodeado de paredes -> '1'
+◦ The map should be surrounded by walls -> '1'
 
-◦ Debe contener un  único jugador -> 'P'
+◦ It should contain only 1 player -> 'P'
 
-◦ Debe contener una única salida alcanzable por el jugador-> 'E'
+◦ It should contain only 1 reachable exit -> 'E'
 
-◦ Debe contener al menos una moneda y ser todas alcanzables por el jugador -> 'C'
+◦ It should contain at least 1 coint, and all of them must be reachable -> 'C'
 
-## Controles 🕹
+## Controls 🕹
 
-|TECLA|ACCION|
+|KEY|ACTION|
 |---|---|
-|`W`, ⬆️|Arriba|
-|`A`, ⬅️|Izquierda|
-|`S`, ⬇️|Abajo|
-|`D`,  ➡️ |Derecha|
-|`ESC ❌`|Cierra la ventana|
+|⬆️|UP|
+|⬅️|LEFT|
+|⬇️|DOWN|
+|➡️ |RIGHT|
+|`ESC ❌`|Closes the window|
